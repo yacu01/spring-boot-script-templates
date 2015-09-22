@@ -1,0 +1,7 @@
+{
+  "name": "spring-boot-script-template-view",
+  "version": "0.0.1-SNAPSHOT",
+  "description": "Sample Spring Boot app with script template views",
+  "author": "pgrimard@gmail.com",
+  "license": "MIT"
+}
