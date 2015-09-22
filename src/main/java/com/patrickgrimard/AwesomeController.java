@@ -24,7 +24,7 @@ public class AwesomeController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    String index(Model model) {
+    public String index(Model model) {
         model.addAttribute("title", env.getProperty("title"));
         return "index";
     }
