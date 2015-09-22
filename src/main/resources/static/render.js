@@ -6,5 +6,10 @@
  * @returns {void|string|XML|*}
  */
 function render(template, model) {
-  return template.replace("{title}", model.title);
+  var items = '';
+  model.items.forEach(function(item) {
+    items += '<li>' + item + '</li>';
+  });
+
+  return template.replace("{title}", model.title).replace("{items}", items);
 }
