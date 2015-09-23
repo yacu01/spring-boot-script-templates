@@ -18,7 +18,11 @@ public class Application {
     public ScriptTemplateConfigurer scriptTemplateConfigurer() {
         ScriptTemplateConfigurer configurer = new ScriptTemplateConfigurer();
         configurer.setEngineName("nashorn");
-        configurer.setScripts("static/render.js");
+        configurer.setScripts(
+                "static/polyfill.js",
+                "node_modules/ejs/ejs.js",
+                "static/render.js"
+        );
         configurer.setRenderFunction("render");
         configurer.setSharedEngine(false);
         return configurer;
@@ -27,8 +31,8 @@ public class Application {
     @Bean
     public ViewResolver scriptViewResolver() {
         ScriptTemplateViewResolver viewResolver = new ScriptTemplateViewResolver();
-        viewResolver.setPrefix("/static/");
-        viewResolver.setSuffix(".html");
+        viewResolver.setPrefix("/templates/");
+        viewResolver.setSuffix(".ejs");
         return viewResolver;
     }
 }

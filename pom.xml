@@ -64,6 +64,16 @@
 	</dependencyManagement>
 	
 	<build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>static/**</include>
+                    <include>**/*.yml</include>
+                    <include>node_modules/ejs/ejs.js</include>
+                </includes>
+            </resource>
+        </resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

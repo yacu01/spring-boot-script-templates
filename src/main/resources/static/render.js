@@ -1,4 +1,22 @@
 /**
+ * Converts a model with possible Java types to JSON object.
+ *
+ * @param model A model possibly containing Java types.
+ * @returns {{}}
+ */
+function toJsonObject(model) {
+  var o = {};
+  for(var k in model) {
+    if(model[k] instanceof Java.type("java.lang.Iterable")) {
+      o[k] = Java.from(model[k]);
+    } else {
+      o[k] = model[k];
+    }
+  }
+  return o;
+}
+
+/**
  * Render function which accepts a template string and replaces elements from the given model.
  *
  * @param template The template to render.
@@ -6,10 +24,6 @@
  * @returns {void|string|XML|*}
  */
 function render(template, model) {
-  var items = '';
-  model.items.forEach(function(item) {
-    items += '<li>' + item + '</li>';
-  });
-
-  return template.replace("{title}", model.title).replace("{items}", items);
+  var html = ejs.render(template, toJsonObject(model));
+  return ejs.render(html);
 }
