@@ -24,6 +24,5 @@ function toJsonObject(model) {
  * @returns {void|string|XML|*}
  */
 function render(template, model) {
-  var html = ejs.render(template, toJsonObject(model));
-  return ejs.render(html);
+  return ejs.render(template, toJsonObject(model));
 }
